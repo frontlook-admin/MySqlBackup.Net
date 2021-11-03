@@ -54,6 +54,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dropBlobExportMode = new System.Windows.Forms.ComboBox();
             this.cbAllowBinaryChar = new System.Windows.Forms.CheckBox();
+            this.cbExportEnableComment = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbTimeUsed = new System.Windows.Forms.Label();
+            this.cbExport_InsertLineBreaksBetweenInsert = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nmExMaxSqlLength)).BeginInit();
             this.SuspendLayout();
             // 
@@ -250,7 +254,7 @@
             this.comboBox_RowsExportMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_RowsExportMode.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_RowsExportMode.FormattingEnabled = true;
-            this.comboBox_RowsExportMode.Location = new System.Drawing.Point(130, 307);
+            this.comboBox_RowsExportMode.Location = new System.Drawing.Point(130, 331);
             this.comboBox_RowsExportMode.Name = "comboBox_RowsExportMode";
             this.comboBox_RowsExportMode.Size = new System.Drawing.Size(178, 23);
             this.comboBox_RowsExportMode.TabIndex = 1;
@@ -258,7 +262,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 310);
+            this.label6.Location = new System.Drawing.Point(12, 334);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(109, 15);
             this.label6.TabIndex = 0;
@@ -289,7 +293,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 339);
+            this.label2.Location = new System.Drawing.Point(12, 363);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 15);
             this.label2.TabIndex = 34;
@@ -303,7 +307,7 @@
             "UTF8 (without unicode byte order)",
             "UTF8",
             "ASCII"});
-            this.dropTextEncoding.Location = new System.Drawing.Point(130, 336);
+            this.dropTextEncoding.Location = new System.Drawing.Point(130, 360);
             this.dropTextEncoding.Name = "dropTextEncoding";
             this.dropTextEncoding.Size = new System.Drawing.Size(178, 23);
             this.dropTextEncoding.TabIndex = 35;
@@ -311,7 +315,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 368);
+            this.label4.Location = new System.Drawing.Point(12, 392);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 15);
             this.label4.TabIndex = 36;
@@ -324,7 +328,7 @@
             this.dropBlobExportMode.Items.AddRange(new object[] {
             "Hexdecimal String",
             "Binary String"});
-            this.dropBlobExportMode.Location = new System.Drawing.Point(130, 365);
+            this.dropBlobExportMode.Location = new System.Drawing.Point(130, 389);
             this.dropBlobExportMode.Name = "dropBlobExportMode";
             this.dropBlobExportMode.Size = new System.Drawing.Size(178, 23);
             this.dropBlobExportMode.TabIndex = 37;
@@ -332,12 +336,51 @@
             // cbAllowBinaryChar
             // 
             this.cbAllowBinaryChar.AutoSize = true;
-            this.cbAllowBinaryChar.Location = new System.Drawing.Point(15, 405);
+            this.cbAllowBinaryChar.Location = new System.Drawing.Point(15, 429);
             this.cbAllowBinaryChar.Name = "cbAllowBinaryChar";
             this.cbAllowBinaryChar.Size = new System.Drawing.Size(221, 19);
             this.cbAllowBinaryChar.TabIndex = 38;
             this.cbAllowBinaryChar.Text = "Allow BlobExportMode = BinaryChar";
             this.cbAllowBinaryChar.UseVisualStyleBackColor = true;
+            // 
+            // cbExportEnableComment
+            // 
+            this.cbExportEnableComment.AutoSize = true;
+            this.cbExportEnableComment.Checked = true;
+            this.cbExportEnableComment.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbExportEnableComment.Location = new System.Drawing.Point(15, 303);
+            this.cbExportEnableComment.Name = "cbExportEnableComment";
+            this.cbExportEnableComment.Size = new System.Drawing.Size(123, 19);
+            this.cbExportEnableComment.TabIndex = 39;
+            this.cbExportEnableComment.Text = "Enable Comment";
+            this.cbExportEnableComment.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(404, 214);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 15);
+            this.label5.TabIndex = 40;
+            this.label5.Text = "Time Used:";
+            // 
+            // lbTimeUsed
+            // 
+            this.lbTimeUsed.AutoSize = true;
+            this.lbTimeUsed.Location = new System.Drawing.Point(404, 235);
+            this.lbTimeUsed.Name = "lbTimeUsed";
+            this.lbTimeUsed.Size = new System.Drawing.Size(0, 15);
+            this.lbTimeUsed.TabIndex = 41;
+            // 
+            // cbExport_InsertLineBreaksBetweenInsert
+            // 
+            this.cbExport_InsertLineBreaksBetweenInsert.AutoSize = true;
+            this.cbExport_InsertLineBreaksBetweenInsert.Location = new System.Drawing.Point(15, 454);
+            this.cbExport_InsertLineBreaksBetweenInsert.Name = "cbExport_InsertLineBreaksBetweenInsert";
+            this.cbExport_InsertLineBreaksBetweenInsert.Size = new System.Drawing.Size(230, 19);
+            this.cbExport_InsertLineBreaksBetweenInsert.TabIndex = 42;
+            this.cbExport_InsertLineBreaksBetweenInsert.Text = "Insert Line Breaks Between INSERTs";
+            this.cbExport_InsertLineBreaksBetweenInsert.UseVisualStyleBackColor = true;
             // 
             // FormExImWithOptions
             // 
@@ -345,6 +388,10 @@
             this.AutoScroll = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(694, 509);
+            this.Controls.Add(this.cbExport_InsertLineBreaksBetweenInsert);
+            this.Controls.Add(this.lbTimeUsed);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cbExportEnableComment);
             this.Controls.Add(this.cbAllowBinaryChar);
             this.Controls.Add(this.dropBlobExportMode);
             this.Controls.Add(this.label4);
@@ -408,5 +455,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox dropBlobExportMode;
         private System.Windows.Forms.CheckBox cbAllowBinaryChar;
+        private System.Windows.Forms.CheckBox cbExportEnableComment;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbTimeUsed;
+        private System.Windows.Forms.CheckBox cbExport_InsertLineBreaksBetweenInsert;
     }
 }

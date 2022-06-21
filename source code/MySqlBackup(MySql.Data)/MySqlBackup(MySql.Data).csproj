@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;NET48;NET472;NET461;NET452</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;NET48;NET472;NET461;NET452;net6.0;net6.0-Windows</TargetFrameworks>
 	<RootNamespace>MySql.Data.Client</RootNamespace>
     <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <Nullable>disable</Nullable>
@@ -21,7 +21,6 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <AssemblyName>MySqlBackup</AssemblyName>
     <ApplicationIcon>logo.ico</ApplicationIcon>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,14 +32,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="bin\Release\README.md">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MySql.Data" Version="8.0.26" />
+    <PackageReference Include="MySql.Data" Version="8.0.29" />
   </ItemGroup>
 
 </Project>

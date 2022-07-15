@@ -1,41 +1,61 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;NET48;NET472;NET461;NET452;net6.0;net6.0-Windows</TargetFrameworks>
-	<RootNamespace>MySql.Data.Client</RootNamespace>
-    <DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
-    <Nullable>disable</Nullable>
-    <PackageId>MySqlBackup.NET</PackageId>
-    <Authors>adriancs</Authors>
-    <Company>MySqlBackup.NET</Company>
-    <Product>MySqlBackup.NET</Product>
-    <Description>A tool to backup and restore MySQL database in C#/VB.NET/ASP.NET.</Description>
-    <Copyright>Public Domain</Copyright>
-    <PackageProjectUrl>https://github.com/MySqlBackupNET/MySqlBackup.Net</PackageProjectUrl>
-    <PackageIcon>logo128.png</PackageIcon>
-    <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/MySqlBackupNET/MySqlBackup.Net</RepositoryUrl>
-    <Version>2.3.6.2</Version>
-    <AssemblyVersion>2.3.6.2</AssemblyVersion>
-    <FileVersion>2.3.6.2</FileVersion>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <AssemblyName>MySqlBackup</AssemblyName>
-    <ApplicationIcon>logo.ico</ApplicationIcon>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net6.0-Windows</TargetFrameworks>
+		<RootNamespace>MySql.Data.Client</RootNamespace>
+		<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
+		<Nullable>disable</Nullable>
+		<PackageId>MySqlBackup.NET</PackageId>
+		<Authors>adriancs</Authors>
+		<Company>MySqlBackup.NET</Company>
+		<Product>MySqlBackup.NET</Product>
+		<Description>A tool to backup and restore MySQL database in C#/VB.NET/ASP.NET.</Description>
+		<Copyright>Public Domain</Copyright>
+		<PackageProjectUrl>https://github.com/MySqlBackupNET/MySqlBackup.Net</PackageProjectUrl>
+		<PackageIcon>logo128.png</PackageIcon>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/MySqlBackupNET/MySqlBackup.Net</RepositoryUrl>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
-  <ItemGroup>
-    <Content Include="logo.ico" />
-  </ItemGroup>
+		<AssemblyName>MySqlBackup</AssemblyName>
 
-  <ItemGroup>
-    <None Include="..\Test_WinForm\Resources\logo128.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MySql.Data" Version="8.0.29" />
-  </ItemGroup>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>latest</LangVersion>
+
+
+		<ApplicationIcon>logo.ico</ApplicationIcon>
+	</PropertyGroup>
+
+
+	<PropertyGroup Label="Version" Condition="'$(DesignTimeBuild)' != 'true' OR '$(BuildingProject)' == 'true'">
+
+		<BuildId>$([System.DateTime]::Now.ToString(yy.MMdd))</BuildId>
+		<BuildCode>$([System.DateTime]::Now.ToString(hhmmss))</BuildCode>
+		<VersionPrefix>6.0.$(BuildId)</VersionPrefix>
+		<BuildVersion>$(BuildCode)</BuildVersion>
+		<VersionSuffix>$(BuildCode)</VersionSuffix>
+		<AssemblyVersion>$(Version)</AssemblyVersion>
+		<FileVersion>$(Version)</FileVersion>
+		<PackageId>$(AssemblyName)</PackageId>
+		<Product>$(AssemblyName)</Product>
+		<Version>$(VersionPrefix)-R$(VersionSuffix)</Version>
+
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Include="logo.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\Test_WinForm\Resources\logo128.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MySql.Data" Version="8.0.29" />
+	</ItemGroup>
 
 </Project>

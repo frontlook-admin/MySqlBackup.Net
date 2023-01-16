@@ -1,7 +1,6 @@
-﻿using System;
+﻿
 using System.Data;
-using System.Linq;
-using System.Timers;
+using Timer = System.Timers.Timer;
 
 namespace MySql.Data.MySqlClient
 {

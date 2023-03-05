@@ -35,12 +35,14 @@
 		<BuildCode>$([System.DateTime]::Now.ToString(hhmmss))</BuildCode>
 		<VersionPrefix>6.0.$(BuildId)</VersionPrefix>
 		<BuildVersion>$(BuildCode)</BuildVersion>
-		<VersionSuffix>$(BuildCode)</VersionSuffix>
+		<VersionSuffix Condition="'$(Configuration)'=='Release'">R$(BuildCode)</VersionSuffix>
+
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<FileVersion>$(Version)</FileVersion>
 		<PackageId>$(AssemblyName)</PackageId>
 		<Product>$(AssemblyName)</Product>
-		<Version>$(VersionPrefix)-R$(VersionSuffix)</Version>
+		<Version Condition="'$(Configuration)'=='Release'">$(VersionPrefix)-$(VersionSuffix)</Version>
+		<Version Condition="'$(Configuration)'=='Debug'">$(VersionPrefix)</Version>
 
 	</PropertyGroup>
 

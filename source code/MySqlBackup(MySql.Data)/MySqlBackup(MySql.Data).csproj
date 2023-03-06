@@ -26,14 +26,15 @@
 
 
 		<ApplicationIcon>logo.ico</ApplicationIcon>
-		<GenerateDocumentationFile>False</GenerateDocumentationFile>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 
 
 
 	<PropertyGroup Label="Version" Condition="'$(DesignTimeBuild)' != 'true' OR '$(BuildingProject)' == 'true'">
-
-		<BuildId>$([System.DateTime]::Now.ToString(yy.MMdd))</BuildId>
+		<MBId>3</MBId>
+		<BuildId Condition="'$(Configuration)'=='Release'">$([System.DateTime]::Now.ToString(yy)).$(MBId)</BuildId>
+		<BuildId Condition="'$(Configuration)'=='Debug'">$([System.DateTime]::Now.ToString(yy.MMdd))</BuildId>
 		<BuildCode>$([System.DateTime]::Now.ToString(hhmmss))</BuildCode>
 		<VersionPrefix>6.0.$(BuildId)</VersionPrefix>
 		<BuildVersion>$(BuildCode)</BuildVersion>

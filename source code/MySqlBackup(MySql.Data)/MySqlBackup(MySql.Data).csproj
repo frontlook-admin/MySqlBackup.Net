@@ -25,7 +25,8 @@
 
 
 		<ApplicationIcon>logo.ico</ApplicationIcon>
-		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<GenerateDocumentationFile>False</GenerateDocumentationFile>
+		<DebugType>None</DebugType>
 	</PropertyGroup>
 
 

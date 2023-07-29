@@ -26,7 +26,7 @@
 
 		<ApplicationIcon>logo.ico</ApplicationIcon>
 		<GenerateDocumentationFile>False</GenerateDocumentationFile>
-		<DebugType>None</DebugType>
+		<DebugType Condition="'$(Configuration)'!='Debug'">None</DebugType>
 	</PropertyGroup>
 
 

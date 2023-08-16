@@ -50,11 +50,6 @@
 	</PropertyGroup>
 
 
-
-	<PropertyGroup Condition="'$(TargetFramework)|$(Platform)'=='net6.0|AnyCPU'">
-		<DebugType>embedded</DebugType>
-	</PropertyGroup>
-
 	<ItemGroup>
 		<Content Include="logo.ico" />
 	</ItemGroup>

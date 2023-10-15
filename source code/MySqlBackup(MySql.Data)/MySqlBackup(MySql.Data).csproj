@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0</TargetFrameworks>
-		<DotNetCore>6.0.14</DotNetCore>
+		<DotNetCore>6.0.22</DotNetCore>
 		<RootNamespace>MySql.Data.Client</RootNamespace>
 		<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
 		<Nullable>disable</Nullable>

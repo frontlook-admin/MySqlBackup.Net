@@ -39,7 +39,8 @@
 		<BuildId Condition="'$(Configuration)'=='Release'">$([System.DateTime]::Now.ToString(yy)).$(MBId)</BuildId>
 		<BuildId Condition="'$(Configuration)'=='Debug'">$([System.DateTime]::Now.ToString(yy.MMdd))</BuildId>
 		<BuildCode>$([System.DateTime]::Now.ToString(hhmmss))</BuildCode>
-		<VersionPrefix>$(VrP).0.$(BuildId)</VersionPrefix>
+		<VersionPrefix Condition="'$(TargetFramework)' == 'net6.0'">6.0.$(BuildId)</VersionPrefix>
+		<VersionPrefix Condition="'$(TargetFramework)' == 'net8.0'">8.0.$(BuildId)</VersionPrefix>
 		<BuildVersion>$(BuildCode)</BuildVersion>
 		<VersionSuffix Condition="'$(Configuration)'=='Debug'">D$(BuildCode)</VersionSuffix>
 

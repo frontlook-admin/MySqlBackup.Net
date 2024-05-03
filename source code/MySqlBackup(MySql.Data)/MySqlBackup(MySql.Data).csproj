@@ -28,6 +28,8 @@
 		<ApplicationIcon>logo.ico</ApplicationIcon>
 		<GenerateDocumentationFile>False</GenerateDocumentationFile>
 		<DebugType Condition="'$(Configuration)'!='Debug'">None</DebugType>
+
+		<RunAOTCompilation>true</RunAOTCompilation>
 	</PropertyGroup>
 
 

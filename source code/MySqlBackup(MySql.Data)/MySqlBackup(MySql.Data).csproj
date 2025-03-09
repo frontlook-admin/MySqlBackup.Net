@@ -30,6 +30,8 @@
 		<DebugType Condition="'$(Configuration)'!='Debug'">None</DebugType>
 
 		<RunAOTCompilation>true</RunAOTCompilation>
+
+		<Configurations>Debug;Release;DevOps</Configurations>
 	</PropertyGroup>
 
 
@@ -37,8 +39,12 @@
 		<BuildId>$([System.DateTime]::Now.ToString(yy.MMdd.HHmm))</BuildId>
 		<BuildId Condition="'$(Configuration)'=='Release'">$([System.DateTime]::Now.ToString(yy.MMdd.HH))</BuildId>
 		<BuildId Condition="'$(Configuration)'=='Debug'">$([System.DateTime]::Now.ToString(yy.MMdd))</BuildId>
+		
+		<BuildId Condition="'$(Configuration)'=='DevOps'">$([System.DateTime]::Now.ToString(yy.MMdd))</BuildId>
 		<BuildCode Condition="'$(Configuration)'=='Release'">$([System.DateTime]::Now.ToString(.hhmmss))</BuildCode>
 		<BuildCode Condition="'$(Configuration)'=='Debug'"></BuildCode>
+		
+		<BuildCode Condition="'$(Configuration)'=='DevOps'" />
 		<VersionPrefix Condition="'$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net6.0-Windows'">6.$(BuildId)</VersionPrefix>
 		<VersionPrefix Condition="'$(TargetFramework)' == 'net8.0' OR '$(TargetFramework)' == 'net8.0-Windows'">8.$(BuildId)</VersionPrefix>
 		<BuildVersion>$(BuildId)$(BuildCode)</BuildVersion>
@@ -55,6 +61,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		
 		<PackageReference Include="MySql.Data" Version="8.3.0" />
 	</ItemGroup>
 

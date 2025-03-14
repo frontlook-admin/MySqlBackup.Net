@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net8.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net8.0;</TargetFrameworks>
 		<DotNetCore Condition="'$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net6.0-Windows'">6.*</DotNetCore>
 		<DotNetCore Condition="'$(TargetFramework)' == 'net8.0' OR '$(TargetFramework)' == 'net8.0-Windows'">8.*</DotNetCore>
 		<RootNamespace>MySql.Data.Client</RootNamespace>
@@ -34,16 +34,16 @@
 		<Configurations>Debug;Release;DevOps</Configurations>
 	</PropertyGroup>
 
-
+	<!--
 	<PropertyGroup Label="Version" Condition="'$(DesignTimeBuild)' != 'true' OR '$(BuildingProject)' == 'true'">
 		<BuildId>$([System.DateTime]::Now.ToString(yy.MMdd.HHmm))</BuildId>
 		<BuildId Condition="'$(Configuration)'=='Release'">$([System.DateTime]::Now.ToString(yy.MMdd.HH))</BuildId>
 		<BuildId Condition="'$(Configuration)'=='Debug'">$([System.DateTime]::Now.ToString(yy.MMdd))</BuildId>
-		
+
 		<BuildId Condition="'$(Configuration)'=='DevOps'">$([System.DateTime]::Now.ToString(yy.MMdd))</BuildId>
 		<BuildCode Condition="'$(Configuration)'=='Release'">$([System.DateTime]::Now.ToString(.hhmmss))</BuildCode>
 		<BuildCode Condition="'$(Configuration)'=='Debug'"></BuildCode>
-		
+
 		<BuildCode Condition="'$(Configuration)'=='DevOps'" />
 		<VersionPrefix Condition="'$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net6.0-Windows'">6.$(BuildId)</VersionPrefix>
 		<VersionPrefix Condition="'$(TargetFramework)' == 'net8.0' OR '$(TargetFramework)' == 'net8.0-Windows'">8.$(BuildId)</VersionPrefix>
@@ -54,15 +54,19 @@
 		<Product>$(AssemblyName)</Product>
 		<Version>$(VersionPrefix)</Version>
 	</PropertyGroup>
+	-->
+	<PropertyGroup Label="Version">
 
-
+		<Version>2.3.9</Version>
+		<AssemblyVersion>2.3.9</AssemblyVersion>
+		<FileVersion>2.3.9</FileVersion>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<AssemblyName>MySqlBackup</AssemblyName>
+		<PackageLicenseExpression>Unlicense</PackageLicenseExpression>
+		<Title>MySqlBackup.NET for mysql.data (oracle)</Title>
+	</PropertyGroup>
 	<ItemGroup>
-		<Content Include="logo.ico" />
-	</ItemGroup>
-
-	<ItemGroup>
-		
-		<PackageReference Include="MySql.Data" Version="8.3.0" />
+		<PackageReference Include="MySql.Data" Version="9.2.0" />
 	</ItemGroup>
 
 </Project>

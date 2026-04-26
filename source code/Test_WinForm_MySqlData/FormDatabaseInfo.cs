@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
@@ -25,6 +26,9 @@ namespace MySqlBackupTestApp
             bw.RunWorkerCompleted += bw_RunWorkerCompleted;
             bw.DoWork += bw_DoWork;
             InitializeComponent();
+            
+            // Apply dark theme to this form when initialized
+            DarkThemeManager.ApplyDarkTheme(this);
         }
 
         void bw_DoWork(object sender, DoWorkEventArgs e)
@@ -47,7 +51,14 @@ namespace MySqlBackupTestApp
         void Start()
         {
             sb = new StringBuilder();
-            sb.AppendLine("<html><head><style>h1 { line-height:160%; font-size: 20pt; } h2 { line-height:160%; font-size: 14pt; } body { font-family: \"Segoe UI\", Arial; line-height: 150%; } table { border: 1px solid #5C5C5C; border-collapse: collapse; } td { font-size: 10pt; padding: 4px; border: 1px solid #5C5C5C; } .code { font-family: \"Courier New\"; font-size: 10pt; line-height:110%; } </style></head>");
+            // Apply dark theme styles to HTML content
+            sb.AppendLine("<html><head><style>h1 { line-height:160%; font-size: 20pt; color: #F0F0F0; } " +
+                "h2 { line-height:160%; font-size: 14pt; color: #F0F0F0; } " +
+                "body { font-family: \"Segoe UI\", Arial; line-height: 150%; background-color: #202020; color: #F0F0F0; } " +
+                "table { border: 1px solid #5C5C5C; border-collapse: collapse; } " +
+                "td { font-size: 10pt; padding: 4px; border: 1px solid #5C5C5C; } " +
+                ".code { font-family: \"Courier New\"; font-size: 10pt; line-height:110%; background-color: #2D2D30; " +
+                "color: #F0F0F0; padding: 10px; display: block; } </style></head>");
             sb.AppendLine("<body>");
 
             using (MySqlConnection conn = new MySqlConnection(Program.ConnectionString))
@@ -396,7 +407,40 @@ ORDER BY  mf.Host,  mf.User,  mf.Db,  mf.Routine_name;";
 
         void WriteTable(DataTable dt)
         {
-            sb.AppendFormat(HtmlExpress.ConvertDataTableToHtmlTable(dt));
+            // Modify the table styling for dark theme
+            sb.Append("<table style=\"background-color: #2D2D30; color: #F0F0F0; border-color: #3F3F46;\">");
+            
+            sb.Append("<tr style=\"background-color: #3C3C3C;\">");
+            sb.AppendFormat("\t");
+            foreach (DataColumn dc in dt.Columns)
+            {
+                sb.AppendFormat("<td style=\"font-weight: bold;\">");
+                sb.AppendFormat(GetHtmlString(dc.ColumnName));
+                sb.AppendFormat("</td>");
+            }
+            sb.AppendLine();
+            sb.AppendLine("</tr>");
+
+            bool alternate = false;
+            foreach (DataRow dr in dt.Rows)
+            {
+                // Alternate row styling
+                string rowStyle = alternate ? "background-color: #333337;" : "background-color: #2D2D30;";
+                alternate = !alternate;
+                
+                sb.AppendFormat("<tr style=\"" + rowStyle + "\">");
+                foreach (DataColumn dc in dt.Columns)
+                {
+                    sb.AppendFormat("<td>");
+
+                    string dataStr = QueryExpress.ConvertToSqlFormat(dr[dc.ColumnName], false, false, null, BlobDataExportMode.HexString);
+
+                    sb.AppendFormat(GetHtmlString(dataStr));
+                    sb.AppendFormat("</td>");
+                }
+                sb.AppendLine("</tr>");
+            }
+            sb.AppendLine("</table>");
             sb.AppendLine("<br />");
         }
 
@@ -408,7 +452,7 @@ ORDER BY  mf.Host,  mf.User,  mf.Db,  mf.Routine_name;";
         void WriteError(string errMsg)
         {
             sb.AppendLine("<br />");
-            sb.AppendLine("<div style=\"background-color: #FFE8E8; padding: 5px; border: 1px solid #FF0000;\">");
+            sb.AppendLine("<div style=\"background-color: #3F1F1F; padding: 5px; border: 1px solid #FF5050;\">");
             sb.AppendLine("Error or Exception occured. Error message:<br />");
             sb.AppendLine(GetHtmlString(errMsg));
             sb.AppendLine("</div>");

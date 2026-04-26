@@ -17,6 +17,8 @@ namespace MySqlBackupTestApp
         public FormMain()
         {
             InitializeComponent();
+            // Apply dark theme to this form
+            DarkThemeManager.ApplyDarkTheme(this);
             this.Text = "MySqlBackup.NET Testing Tool: " + Program.Version + ", Loaded MySqlBackup.DLL Version: " + MySql.Data.MySqlClient.MySqlBackup.Version;
             LoadSettings();
         }
@@ -59,6 +61,9 @@ namespace MySqlBackupTestApp
                 form.WindowState = FormWindowState.Maximized;
                 form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
                 form.TopLevel = false;
+
+                // Apply dark theme to the newly created form
+                DarkThemeManager.ApplyDarkTheme(form);
 
                 panel1.Controls.Add(form);
                 form.Show();
@@ -197,6 +202,8 @@ namespace MySqlBackupTestApp
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FormAbout f = new FormAbout();
+            // Apply dark theme to the dialog form
+            DarkThemeManager.ApplyDarkTheme(f);
             f.ShowDialog();
         }
 
@@ -309,6 +316,8 @@ namespace MySqlBackupTestApp
         private void exportImportVIEWWithDependenciesWithinVIEWsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormTestViewDependencies f = new FormTestViewDependencies();
+            // Apply dark theme to the dialog form
+            DarkThemeManager.ApplyDarkTheme(f);
             f.ShowDialog();
         }
 
@@ -325,6 +334,8 @@ namespace MySqlBackupTestApp
         private void BtConnStrBuilder_Click(object sender, EventArgs e)
         {
             FormConnStringBuilder f = new FormConnStringBuilder(textBox_Connection.Text);
+            // Apply dark theme to the dialog form
+            DarkThemeManager.ApplyDarkTheme(f);
             if (f.ShowDialog() == DialogResult.OK)
             {
                 textBox_Connection.Text = f.ConnStr;

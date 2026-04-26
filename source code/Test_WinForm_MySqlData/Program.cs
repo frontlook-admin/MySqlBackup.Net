@@ -36,6 +36,10 @@ namespace MySqlBackupTestApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            
+            // Register for form creation to apply dark theme
+            Application.AddMessageFilter(new DarkThemeMessageFilter());
+            
             Application.Run(new FormMain());
         }
 
@@ -66,6 +70,27 @@ namespace MySqlBackupTestApp
                 return false;
             }
             return true;
+        }
+    }
+
+    // Message filter to intercept form creation and apply dark theme
+    public class DarkThemeMessageFilter : IMessageFilter
+    {
+        private const int WM_CREATE = 0x0001;
+        
+        public bool PreFilterMessage(ref Message m)
+        {
+            if (m.Msg == WM_CREATE && m.HWnd != IntPtr.Zero)
+            {
+                // Get the form that's being created
+                Control control = Control.FromHandle(m.HWnd);
+                if (control != null && control is Form form)
+                {
+                    // Apply dark theme to the new form
+                    form.HandleCreated += (s, e) => DarkThemeManager.ApplyDarkTheme(form);
+                }
+            }
+            return false;
         }
     }
 }

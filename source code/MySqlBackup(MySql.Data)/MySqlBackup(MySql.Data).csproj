@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net8.0;</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net10.0;</TargetFrameworks>
 		<DotNetCore Condition="'$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net6.0-Windows'">6.*</DotNetCore>
-		<DotNetCore Condition="'$(TargetFramework)' == 'net8.0' OR '$(TargetFramework)' == 'net8.0-Windows'">8.*</DotNetCore>
+		<DotNetCore Condition="'$(TargetFramework)' == 'net10.0' OR '$(TargetFramework)' == 'net10.0-Windows'">8.*</DotNetCore>
 		<RootNamespace>MySql.Data.Client</RootNamespace>
 		<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
 		<Nullable>disable</Nullable>
@@ -46,7 +46,7 @@
 
 		<BuildCode Condition="'$(Configuration)'=='DevOps'" />
 		<VersionPrefix Condition="'$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net6.0-Windows'">6.$(BuildId)</VersionPrefix>
-		<VersionPrefix Condition="'$(TargetFramework)' == 'net8.0' OR '$(TargetFramework)' == 'net8.0-Windows'">8.$(BuildId)</VersionPrefix>
+		<VersionPrefix Condition="'$(TargetFramework)' == 'net10.0' OR '$(TargetFramework)' == 'net10.0-Windows'">8.$(BuildId)</VersionPrefix>
 		<BuildVersion>$(BuildId)$(BuildCode)</BuildVersion>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<FileVersion>$(Version)</FileVersion>
